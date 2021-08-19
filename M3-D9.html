@@ -37,6 +37,10 @@
         </div>
     </nav>
 
+    <div class='row' style='margin: 5%;'>
+
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -44,12 +48,40 @@
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
 
+    <script>
+
+        window.onload = async function () {
+            let response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
+                method: 'GET',
+                headers: {
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFlNTA2NzA2MTBjYjAwMTVkYTJhOTIiLCJpYXQiOjE2MjkzNzY2MTUsImV4cCI6MTYzMDU4NjIxNX0.SxaFtZP3wQTPGcbVCLa_OJ69h72ECWlCU4s2nh4JSH0"
+                }
+            })
+            let product = await response.json()
+            let row = document.querySelector('.row')
+            product.forEach(element => {
+                row.innerHTML += `
+                <div class="card" style="width: 18rem;">
+                <img src="${element.imageUrl}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${element.name} - ${element.brand}</h5>
+                    <p class="card-text">${element.description}</p>
+                    <button href="#" class="btn">${element.price}€</button>
+                </div>
+                </div>
+                `
+            })
+        }
+
+
+    </script>
+
 
 </body>
 
 </html>
-</head>
 
-<body></body>
+<!--
+    
 
-</html>
+-->

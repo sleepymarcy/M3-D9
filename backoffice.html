@@ -60,14 +60,19 @@
                             required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="price">Brand</label>
-                        <input id="price" type="text" class="form-control" aria-describedby="brand field"
+                        <label for="brand">Brand</label>
+                        <input id="brand" type="text" class="form-control" aria-describedby="brand field"
                             placeholder="Write the product's brand here" required>
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
                         <input id="price" type="number" class="form-control" aria-describedby="price field"
                             placeholder="Write the product's price here" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image</label>
+                        <input id="image" type="text" class="form-control" aria-describedby="image field"
+                            placeholder="Image" required>
                     </div>
                     <div class="d-flex justify-content-between">
                         <button id="submitButton" type="submit" class="btn btn-warning"
@@ -85,6 +90,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
+
+    <script>
+
+        async function handleSubmit(event) {
+            event.preventDefault()
+            const NewProduct = {
+                name: document.getElementById('name').value,
+                description: document.getElementById('description').value,
+                brand: document.getElementById('brand').value,
+                price: document.getElementById('price').value,
+                imageUrl: document.getElementById('image').value
+            }
+            console.log(NewProduct)
+
+            try {
+                let response = await fetch('https://striveschool-api.herokuapp.com/api/product/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFlNTA2NzA2MTBjYjAwMTVkYTJhOTIiLCJpYXQiOjE2MjkzNzY2MTUsImV4cCI6MTYzMDU4NjIxNX0.SxaFtZP3wQTPGcbVCLa_OJ69h72ECWlCU4s2nh4JSH0"
+                    },
+                    body: JSON.stringify(NewProduct) 
+                })
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+
+
+
+
+    </script>
 
 
 </body>

@@ -18,3 +18,12 @@ body {
 hr {
     border-color: #232F3E;
 }
+
+.btn {
+    background-color: #131921;
+    color: #f3a847;
+}
+
+h5 {
+    color: #131921;
+}
