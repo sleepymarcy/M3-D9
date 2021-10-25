@@ -15,7 +15,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/M3-D9.html">
+        <a class="navbar-brand" href="M3-D9.html">
             <img src="https://boostedmedia.net/wp-content/uploads/2019/11/white-amazon-logo-png-6.png" width="100"
                 height="auto" alt="">
         </a>
@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/backoffice.html">Back Office <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/backoffice.html">Add a product<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -51,32 +51,32 @@
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input id="name" type="text" class="form-control" aria-describedby="name field"
-                            placeholder="Write a name for the product" required>
+                            placeholder="" required>
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
                         <textarea id="description" type="text" rows="3" class="form-control"
-                            aria-describedby="description field" placeholder="Write the product's description"
+                            aria-describedby="description field" placeholder=""
                             required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="brand">Brand</label>
                         <input id="brand" type="text" class="form-control" aria-describedby="brand field"
-                            placeholder="Write the product's brand here" required>
+                            placeholder="" required>
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
                         <input id="price" type="number" class="form-control" aria-describedby="price field"
-                            placeholder="Write the product's price here" required>
+                            placeholder="" required>
                     </div>
                     <div class="form-group">
                         <label for="image">Image</label>
                         <input id="image" type="text" class="form-control" aria-describedby="image field"
-                            placeholder="Image" required>
+                            placeholder="" required>
                     </div>
                     <div class="d-flex justify-content-between">
                         <button id="submitButton" type="submit" class="btn btn-warning"
-                            onclick="this.form.classList.add('validated')"><span>Submit</span>
+                            onclick="this.form.classList.add('validated'), Alert()"><span>Submit</span>
                         </button>
                     </div>
                 </form>
@@ -105,13 +105,12 @@
             console.log(NewProduct)
 
             try {
-                let response = await fetch('https://striveschool-api.herokuapp.com/api/product/', {
+                let response = await fetch('http://localhost:3010/products', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTFlNTA2NzA2MTBjYjAwMTVkYTJhOTIiLCJpYXQiOjE2MjkzNzY2MTUsImV4cCI6MTYzMDU4NjIxNX0.SxaFtZP3wQTPGcbVCLa_OJ69h72ECWlCU4s2nh4JSH0"
                     },
-                    body: JSON.stringify(NewProduct) 
+                    body: JSON.stringify(NewProduct)
                 })
 
             } catch (error) {
@@ -119,9 +118,9 @@
             }
         }
 
-
-
-
+        function Alert() {
+            alert('Product added successfully!')
+        }
 
     </script>
 

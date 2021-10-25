@@ -27,3 +27,8 @@ hr {
 h5 {
     color: #131921;
 }
+
+.row {
+    margin: auto;
+    justify-content: center;
+}
