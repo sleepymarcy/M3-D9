@@ -36,7 +36,7 @@
             </form>
         </div>
     </nav>
-   
+
     <div class='row'></div>
 
 
@@ -55,6 +55,7 @@
             })
             let product = await response.json()
             let row = document.querySelector('.row')
+            // console.log(product)
             product.forEach(element => {
                 row.innerHTML += `
                 
@@ -66,17 +67,29 @@
                                 <li class="list-group-item">${element.brand}</li>
                                 <li class="list-group-item">${element.description}</li>
                                 <li class="list-group-item">${element.price}€</li>
+                                <li class="list-group-item">${element.category}</li>
+                                <li class="list-group-item">${element.id}</li>
                                 <li class="list-group-item"></li>
                             </ul>
                             <button href="#" class="btn">Delete</button>
                             <button href="#" class="btn">Edit</button>
-                            <button onclick="" class="btn">Reviews</button>
+                            <button onclick="getReviews()" class="btn">Reviews</button>
                         </div>
                     </div>
                 
                 `
             })
         }
+
+        const getReviews = async () => {
+            let response = await fetch("http://localhost:3010/reviews/${product.id}", {
+                method: 'GET',
+            })
+            let reviews = await response.json()
+            console.log(reviews)
+        }
+
+        // href="M3-D9.html?id=${product.id}"
 
         // const deleteProduct = async () => {
         //     try {
