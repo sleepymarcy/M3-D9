@@ -82,7 +82,7 @@
         }
 
         const getReviews = async () => {
-            let response = await fetch("http://localhost:3010/reviews/${product.id}", {
+            let response = await fetch("http://localhost:3010/products/${id}/reviews", {
                 method: 'GET',
             })
             let reviews = await response.json()
